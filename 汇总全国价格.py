@@ -31,27 +31,22 @@ If int then indicates last column to be parsed
 If list of ints then indicates list of column numbers to be parsed
 If string then indicates comma separated list of Excel column letters and column ranges (e.g. “A:E” or “A,C,E:F”). Ranges are inclusive of both sides.
 '''
-df = pd.read_excel(r'D:\Data\新发地菜价\普通菜\新发地每日蔬菜价格表-20160803.xls', sheet_name='Sheet1', header = 1, skipfooter = 3, parse_cols = 'A:F')
+df = pd.read_excel(r'C:\Users\MaleBird\Desktop\2018_01_06\批发价格 18.1.10.xls', sheet_name='Report', header = None, name = ["蔬菜","省","市","批发市场","日期","大宗价","最高价","最低价","交易量","产地"], skiprows = 11,  skipfooter = 3)
 #print(df.describe())
-df['日期'] = '2016-08-03'
 print(df.head())
 #print(df.describe())
 print(df.tail())
 #提取其他文件
 
 
-for i in range(1, len(commonVegList)):
+for i in range(1, len(docList)):
     print('i=', i)
-    docName = commonVegList[i]
-    doc_address = r'D:\Data\新发地菜价\普通菜'
+    docName = docList[i]
+    doc_address = r'C:\Users\MaleBird\Desktop\2018_01_06'
     doc_address += '\\' + docName
     print("本次打开的文件名为：", docName)
-    df_temp = pd.read_excel(doc_address, sheet_name='Sheet1', header = 1, skipfooter = 3, parse_cols = 'A:F')
+    df_temp = pd.read_excel(doc_address, sheet_name='Report', header = None, name = ["蔬菜","省","市","批发市场","日期","大宗价","最高价","最低价","交易量","产地"], skiprows = 11,  skipfooter = 3)
     #print(df_temp.head())
-    colDate = str(docName[11:15]) + '-' + str(docName[15:17]) + '-' + str(docName[17:19])
-    print('本次添加的colDate为：', colDate)
-    #print(type(colDate))
-    df_temp['日期'] = colDate
     df = df.append(df_temp)
     #print(df.tail())
     i += 1
@@ -59,7 +54,7 @@ for i in range(1, len(commonVegList)):
 print(df.tail())
 
 
-writer = r'D:\Data\新发地菜价\普通菜\普通菜价格汇总.xlsx'
-df.to_excel(writer, sheet_name='普通菜价格汇总')
-
-#python D:\Github\xfd_vegetable_price\汇总全国价格.py
+writer = r'C:\Users\MaleBird\Desktop\2018_01_06\2018_01_06.xlsx'
+df.to_excel(writer, sheet_name='201801-201806')
+print('已导出')
+#python D:\Github\xfd_vegetable_price\汇总全国价格.py'''
