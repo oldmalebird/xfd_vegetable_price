@@ -38,7 +38,6 @@ print(df.head())
 print(df.tail())
 #提取其他文件
 
-
 for i in range(1, len(docList)):
     print('i=', i)
     docName = docList[i]
@@ -50,9 +49,7 @@ for i in range(1, len(docList)):
     df = df.append(df_temp)
     #print(df.tail())
     i += 1
-
 print(df.tail())
-
 
 writer = r'C:\Users\MaleBird\Desktop\2018_01_06\2018_01_06.xlsx'
 df.to_excel(writer, sheet_name='201801-201806')
