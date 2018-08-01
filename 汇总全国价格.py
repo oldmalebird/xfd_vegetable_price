@@ -31,7 +31,7 @@ If int then indicates last column to be parsed
 If list of ints then indicates list of column numbers to be parsed
 If string then indicates comma separated list of Excel column letters and column ranges (e.g. “A:E” or “A,C,E:F”). Ranges are inclusive of both sides.
 '''
-df = pd.read_excel(r'C:\Users\MaleBird\Desktop\2018_01_06\批发价格 18.1.10.xls', sheet_name='Report', header = None, name = ["蔬菜","省","市","批发市场","日期","大宗价","最高价","最低价","交易量","产地"], skiprows = 11,  skipfooter = 3)
+df = pd.read_excel(r'C:\Users\MaleBird\Desktop\2018_01_06\批发价格 18.1.10.xls', sheet_name='Report', header = None, names = ["蔬菜","省","市","批发市场","日期","大宗价","最高价","最低价","交易量","产地"], skiprows = 11,  skipfooter = 3)
 #print(df.describe())
 print(df.head())
 #print(df.describe())
