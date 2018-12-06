@@ -67,7 +67,8 @@ commonVegList = [
     '新发地每日蔬菜价格表-20181127.xls', '新发地每日蔬菜价格表-20181128.xls',
     '新发地每日蔬菜价格表-20181129.xls', '新发地每日蔬菜价格表-20181130.xls',
     '新发地每日蔬菜价格表-20181201.xls', '新发地每日蔬菜价格表-20181203.xls',
-    '新发地每日蔬菜价格表-20181204.xls', '新发地每日蔬菜价格表-20181205.xls'
+    '新发地每日蔬菜价格表-20181204.xls', '新发地每日蔬菜价格表-20181205.xls',
+    '新发地每日蔬菜价格表-20181206.xls'
 ]
 
 #提取第一个文件
@@ -80,19 +81,22 @@ If int then indicates last column to be parsed
 If list of ints then indicates list of column numbers to be parsed
 If string then indicates comma separated list of Excel column letters and column ranges (e.g. “A:E” or “A,C,E:F”). Ranges are inclusive of both sides.
 '''
+
 df = pd.read_excel(
-    r"C:\Users\cva_b\Desktop\菜价\普通菜\新发地每日蔬菜价格表-20180723.xls",
+    r'C:\Users\cva_b\Desktop\菜价\普通菜\新发地每日蔬菜价格表-20180723.xls',
     sheet_name='Sheet1',
-    header=1,
-    skipfooter=3,
-    parse_cols='A:F')
+    header=None,
+    names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+    skiprows=2,
+    skipfooter=4,
+    use_cols='A:F')
 #print(df.describe())
 df['日期'] = '2018-07-23'
 print(df.head())
 #print(df.describe())
 print(df.tail())
 #提取其他文件
-
+'''
 for i in range(1, len(commonVegList)):
     print('i=', i)
     docName = commonVegList[i]
@@ -104,9 +108,8 @@ for i in range(1, len(commonVegList)):
         sheet_name='Sheet1',
         header=None,
         names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
-        skiprows=8,
-        skipfooter=3,
-        use_cols='A:F')
+        skiprows=2,
+        skipfooter=3,use_cols='A:F')
     #print(df_temp.head())
     colDate = str(docName[11:15]) + '-' + str(docName[15:17]) + '-' + str(
         docName[17:19])
@@ -120,7 +123,8 @@ for i in range(1, len(commonVegList)):
 print(df.tail())
 
 #后缀名可为xlsx
-writer = r'D:\Data\新发地菜价\普通菜\普通菜价格汇总20180723-1205.xls'
+writer = r'D:\Data\新发地菜价\普通菜\普通菜价格汇总20180723-1206.xls'
 df.to_excel(writer, sheet_name='普通菜价格汇总', index=False)
 
 #python D:\Github\xfd_vegetable_price\commonVegCollect.py
+'''

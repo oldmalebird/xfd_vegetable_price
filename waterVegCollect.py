@@ -34,7 +34,7 @@ waterVegList = [
     '新发地水菜价格表-20181122.xls', '新发地水菜价格表-20181123.xls', '新发地水菜价格表-20181126.xls',
     '新发地水菜价格表-20181127.xls', '新发地水菜价格表-20181128.xls', '新发地水菜价格表-20181129.xls',
     '新发地水菜价格表-20181130.xls', '新发地水菜价格表-20181203.xls', '新发地水菜价格表-20181204.xls',
-    '新发地水菜价格表-20181205.xls'
+    '新发地水菜价格表-20181205.xls', '新发地水菜价格表-20181206.xls'
 ]
 
 #提取第一个文件
@@ -43,7 +43,7 @@ df = pd.read_excel(
     sheet_name='Sheet1',
     header=None,
     names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
-    skiprows=8,
+    skiprows=3,
     skipfooter=3,
     use_cols='A:F')
 #print(df.describe())
@@ -61,7 +61,7 @@ for i in range(1, len(waterVegList)):
         sheet_name='Sheet1',
         header=None,
         names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
-        skiprows=8,
+        skiprows=3,
         skipfooter=3,
         use_cols='A:F')
     #print(df_temp.head())
@@ -74,7 +74,7 @@ for i in range(1, len(waterVegList)):
     i += 1
 
 print(df.tail())
-writer = r'D:\Data\新发地菜价\水菜\水菜价格汇总20180723-1205.xls'
+writer = r'D:\Data\新发地菜价\水菜\水菜价格汇总20180723-1206.xls'
 df.to_excel(writer, sheet_name='水菜价格汇总', index=False)
 
 #python D:\Github\xfd_vegetable_price\waterVegCollect.py
