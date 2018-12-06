@@ -102,9 +102,11 @@ for i in range(1, len(commonVegList)):
     df_temp = pd.read_excel(
         doc_address,
         sheet_name='Sheet1',
-        header=1,
+        header=None,
+        names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+        skiprows=8,
         skipfooter=3,
-        parse_cols='A:F')
+        use_cols='A:F')
     #print(df_temp.head())
     colDate = str(docName[11:15]) + '-' + str(docName[15:17]) + '-' + str(
         docName[17:19])
@@ -119,6 +121,6 @@ print(df.tail())
 
 #后缀名可为xlsx
 writer = r'D:\Data\新发地菜价\普通菜\普通菜价格汇总20180723-1205.xls'
-df.to_excel(writer, sheet_name='普通菜价格汇总')
+df.to_excel(writer, sheet_name='普通菜价格汇总', index=False)
 
 #python D:\Github\xfd_vegetable_price\commonVegCollect.py
