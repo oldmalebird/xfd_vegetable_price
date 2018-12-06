@@ -41,8 +41,11 @@ waterVegList = [
 df = pd.read_excel(
     r"C:\Users\cva_b\Desktop\菜价\水菜\新发地水菜价格表-20180723.xls",
     sheet_name='Sheet1',
-    header=2,
-    skipfooter=3)
+    header=None,
+    names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+    skiprows=8,
+    skipfooter=3,
+    use_cols='A:F')
 #print(df.describe())
 df['日期'] = '2018-07-23'
 print(df.head())
@@ -54,7 +57,13 @@ for i in range(1, len(waterVegList)):
     doc_address += '\\' + docName
     #print("本次打开的文件名为：", docName)
     df_temp = pd.read_excel(
-        doc_address, sheet_name='Sheet1', header=2, skipfooter=3)
+        doc_address,
+        sheet_name='Sheet1',
+        header=None,
+        names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+        skiprows=8,
+        skipfooter=3,
+        use_cols='A:F')
     #print(df_temp.head())
     colDate = str(docName[9:13]) + '-' + str(docName[13:15]) + '-' + str(
         docName[15:17])
@@ -66,6 +75,6 @@ for i in range(1, len(waterVegList)):
 
 print(df.tail())
 writer = r'D:\Data\新发地菜价\水菜\水菜价格汇总20180723-1205.xls'
-df.to_excel(writer, sheet_name='水菜价格汇总')
+df.to_excel(writer, sheet_name='水菜价格汇总', index=False)
 
 #python D:\Github\xfd_vegetable_price\waterVegCollect.py
