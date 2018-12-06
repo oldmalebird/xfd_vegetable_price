@@ -19,7 +19,7 @@ df = pd.read_excel(
     names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
     skiprows=3,
     skipfooter=4,
-    use_cols='A:F')
+    usecols='A:F')
 #print(df.describe())
 df['日期'] = '2018-07-26'
 #print(df.head())

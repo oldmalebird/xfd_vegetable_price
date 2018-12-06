@@ -39,7 +39,7 @@ waterVegList = [
 
 #提取第一个文件
 df = pd.read_excel(
-    r"C:\Users\cva_b\Desktop\菜价\水菜\新发地水菜价格表-20180723.xls",
+    r"C:usecolsva_b\Desktop\菜价\水菜\新发地水菜价格表-20180723.xls",
     sheet_name='Sheet1',
     header=None,
     names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
