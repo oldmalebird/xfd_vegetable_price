@@ -1,6 +1,5 @@
-#提取
+#只提取价格数据，删除蔬菜名中的空格
 import pandas as pd
-#python D:\Github\xfd_vegetable_price\specialVegCollect.py
 specialVegList = [
     '新发地特菜价格表-20180726.xls', '新发地特菜价格表-20180801.xls', '新发地特菜价格表-20180807.xls',
     '新发地特菜价格表-20180811.xls', '新发地特菜价格表-20180815.xls', '新发地特菜价格表-20180822.xls',
@@ -20,13 +19,14 @@ df = pd.read_excel(
     skiprows=3,
     skipfooter=4,
     usecols='A:F')
-#print(df.describe())
+#添加日期列
 df['日期'] = '2018-07-26'
-#print(df.head())
-#print(df)
-#print(df.describe())
-print(df.head())
+#删除蔬菜名称中的空格
+df['品种'] = df['品种'].str.replace(' ', '')
+#删除最低价为0和空格的行
+df = df[df['最低价（元/斤）'] > 0]
 
+#提取其他文件
 for i in range(1, len(specialVegList)):
     docName = specialVegList[i]
     doc_address = r'C:\Users\cva_b\Desktop\菜价\特菜'
@@ -46,6 +46,10 @@ for i in range(1, len(specialVegList)):
     #print('本次添加的colDate为：', colDate)
     #print(type(colDate))
     df_temp['日期'] = colDate
+    #删除蔬菜名中的空格
+    df_temp['品种'] = df_temp['品种'].str.replace(' ', '')
+    #删除最低价为0的行
+    df_temp = df_temp[df['最低价（元/斤）'] > 0]
     df = df.append(df_temp)
     i += 1
 

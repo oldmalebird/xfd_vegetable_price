@@ -107,9 +107,9 @@ for i in range(1, len(commonVegList)):
     i += 1
 
 print(df.tail())
-
+'''
 #后缀名可为xlsx
 writer = r'D:\Data\新发地菜价\普通菜\普通菜价格汇总20180723-1206.xls'
 df.to_excel(writer, sheet_name='普通菜价格汇总', index=False)
-
+'''
 #python D:\Github\xfd_vegetable_price\commonVegCollect.py
