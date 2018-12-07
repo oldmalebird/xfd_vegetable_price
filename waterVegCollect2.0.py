@@ -41,7 +41,7 @@ df = pd.read_excel(
     r"C:usecolsva_b\Desktop\菜价\水菜\新发地水菜价格表-20180723.xls",
     sheet_name='Sheet1',
     header=None,
-    names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+    names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万公斤）", "交易额（万元）"],
     skiprows=3,
     skipfooter=3,
     usecols='A:F')
@@ -64,7 +64,9 @@ for i in range(1, len(waterVegList)):
         doc_address,
         sheet_name='Sheet1',
         header=None,
-        names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
+        names=[
+            "品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万公斤）", "交易额（万元）"
+        ],
         skiprows=3,
         skipfooter=3,
         usecols='A:F')
@@ -77,7 +79,7 @@ for i in range(1, len(waterVegList)):
     #删除蔬菜名中的空格
     df_temp['品种'] = df_temp['品种'].str.replace(' ', '')
     #删除最低价为0的行
-    df_temp = df_temp[df['最低价（元/斤）'] > 0]
+    df_temp = df_temp[df_temp['最低价（元/斤）'] > 0]
     df = df.append(df_temp)
     i += 1
 

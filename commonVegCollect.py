@@ -85,7 +85,7 @@ df = pd.read_excel(
     header=None,
     names=["品种", "最低价（元/斤）", "最高价（元/斤）", "平均价（元/斤）", "上市量（万吨）", "交易额（万元）"],
     skiprows=2,
-    skipfooter=4,
+    skipfooter=3,
     usecols='A:F')
 
 #print(df.describe())
