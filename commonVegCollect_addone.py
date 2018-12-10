@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_excel(r"D:\Data\新发地菜价\新发地普通菜价格汇总.xlsx", sheet_name='普通菜')
 print(df.head())
 
-docName = '新发地每日蔬菜价格表-20181207.xls'
+docName = '新发地每日蔬菜价格表-20181210.xls'
 doc_address = r'D:\Data\新发地菜价\price_raw'
 doc_address += '\\' + docName
 print("本次打开的文件名为：", docName)
@@ -31,9 +31,11 @@ df_temp = df_temp[df_temp['最低价（元/斤）'] > 0]
 df = df.append(df_temp)
 
 print(df.tail())
+print('还没处理完，别关！！！')
 
 #后缀名为xlsx且写入原文件时时writer必须save和close
 writer = pd.ExcelWriter('D:\Data\新发地菜价\新发地普通菜价格汇总.xlsx')
 df.to_excel(excel_writer=writer, sheet_name='普通菜', index=False)
 writer.save()
 writer.close()
+print('现在可以关了')

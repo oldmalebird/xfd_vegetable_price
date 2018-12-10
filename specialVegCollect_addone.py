@@ -32,8 +32,11 @@ print(df_temp)
 df = df.append(df_temp)
 
 print(df.tail())
+print('还没处理完，别关！！！')
+
 #后缀名为xlsx且写入原文件时时writer必须save和close
 writer = pd.ExcelWriter('D:\Data\新发地菜价\新发地特菜价格汇总.xlsx')
 df.to_excel(excel_writer=writer, sheet_name='特菜', index=False)
 writer.save()
 writer.close()
+print('现在可以关了')
