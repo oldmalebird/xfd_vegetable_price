@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_excel(r"D:\Data\新发地菜价\新发地水菜价格汇总.xlsx", sheet_name='水菜')
 print(df.head())
 
-docName = '新发地水菜价格表-20181226.xls'
+docName = '新发地水菜价格表-20181227.xls'
 doc_address = r'D:\Data\新发地菜价\price_raw'
 doc_address += '\\' + docName
 print("本次打开的文件名为：", docName)
