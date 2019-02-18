@@ -36,7 +36,7 @@ print('还没处理完，别关！！！')
 print('还没处理完，别关！！！')
 print('还没处理完，别关！！！')
 print('还没处理完，别关！！！')
-print('还没处理完，别关！！！')
+print('--------------------')
 
 #后缀名为xlsx且写入原文件时时writer必须save和close
 writer = pd.ExcelWriter('D:\Data\新发地菜价\新发地特菜价格汇总.xlsx')
