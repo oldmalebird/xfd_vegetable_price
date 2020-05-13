@@ -1,6 +1,6 @@
 # -*-coding:utf-8-*-
 import os
-dir = r"D:\中国蔬菜协会data\生产者价格"
+dir = r"D:\data\生产者价格"
 dirs = os.listdir(dir)
 '''for dirc in dirs:
     print(dirc)
